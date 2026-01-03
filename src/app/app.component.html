@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+  <span>KinTree</span>
+  <span class="spacer"></span>
+  <ng-container *ngIf="authService.user$ | async as user">
+    <span>{{ user.email }}</span>
+    <button mat-button (click)="authService.logout()">
+      <mat-icon>logout</mat-icon>
+      Logout
+    </button>
+  </ng-container>
+</mat-toolbar>
+
+<router-outlet></router-outlet>
+

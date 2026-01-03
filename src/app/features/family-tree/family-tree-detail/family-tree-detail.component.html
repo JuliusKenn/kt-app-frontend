@@ -1,0 +1,25 @@
+<div class="container" *ngIf="familyTree">
+  <div class="header">
+    <h1>{{ familyTree.name }}</h1>
+    <button mat-button (click)="router.navigate(['/family-trees'])">
+      <mat-icon>arrow_back</mat-icon>
+      Back to List
+    </button>
+  </div>
+
+  <p *ngIf="familyTree.description">{{ familyTree.description }}</p>
+
+  <div *ngIf="loading" class="loading">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <div *ngIf="!loading" class="family-tree-container">
+    <ngx-graph
+      [nodes]="nodes"
+      [links]="links"
+      [view]="[800, 600]"
+      [layout]="'dagre'">
+    </ngx-graph>
+  </div>
+</div>
+
